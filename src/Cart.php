@@ -1,19 +1,19 @@
 <?php
 
-namespace Gloudemans\Shoppingcart;
+namespace Tjmpromos\Laravel\Shoppingcart;
 
 use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Session\SessionManager;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Contracts\Events\Dispatcher;
-use Gloudemans\Shoppingcart\Contracts\Buyable;
-use Gloudemans\Shoppingcart\Contracts\Shippable;
-use Gloudemans\Shoppingcart\Exceptions\UnknownModelException;
-use Gloudemans\Shoppingcart\Exceptions\InvalidRowIDException;
-use Gloudemans\Shoppingcart\Exceptions\CartAlreadyStoredException;
-use Gloudemans\Shoppingcart\Contracts\Discountable;
-use Gloudemans\Shoppingcart\CartItem;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Buyable;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Shippable;
+use Tjmpromos\Laravel\Shoppingcart\Exceptions\UnknownModelException;
+use Tjmpromos\Laravel\Shoppingcart\Exceptions\InvalidRowIDException;
+use Tjmpromos\Laravel\Shoppingcart\Exceptions\CartAlreadyStoredException;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Discountable;
+use Tjmpromos\Laravel\Shoppingcart\CartItem;
 use PhpUnitsOfMeasure\PhysicalQuantity\Mass;
 
 
@@ -85,7 +85,7 @@ class Cart
      * Set the current cart instance.
      *
      * @param string|null $instance
-     * @return \Gloudemans\Shoppingcart\Cart
+     * @return \Tjmpromos\Laravel\Shoppingcart\Cart
      */
     public function instance($instance = null)
     {
@@ -112,7 +112,7 @@ class Cart
      * @param int|float $qty
      * @param float $price
      * @param array $options
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public function add($id, $name = null, $qty = null, $price = null, array $options = [])
     {
@@ -139,7 +139,7 @@ class Cart
      * @param mixed $id
      * @param mixed $name
      * @param float $price
-     * @return  \Gloudemans\Shoppingcart\ShippingItem
+     * @return  \Tjmpromos\Laravel\Shoppingcart\ShippingItem
      */
     public function shipping($id, $name = null, $price = null)
     {
@@ -191,7 +191,7 @@ class Cart
      *
      * @param string $rowId
      * @param mixed $qty
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public function update($rowId, $qty)
     {
@@ -245,7 +245,7 @@ class Cart
      * Get a cart item from the cart by its rowId.
      *
      * @param string $rowId
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public function get($rowId)
     {
@@ -645,7 +645,7 @@ class Cart
      * @param int|float $qty
      * @param float $price
      * @param array $options
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     private function createCartItem($id, $name, $qty, $price, array $options)
     {
@@ -670,7 +670,7 @@ class Cart
      * @param mixed $id
      * @param mixed $name
      * @param float $price
-     * @return \Gloudemans\Shoppingcart\ShippingItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\ShippingItem
      */
     private function createShippingItem($id, $name, $price)
     {
@@ -722,7 +722,7 @@ class Cart
      * @param mixed $id
      * @param mixed $name
      * @param float $value
-     * @return \Gloudemans\Shoppingcart\DiscountItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\DiscountItem
      */
     private function createDiscountItem($id, $name, $qty, $price, $type)
     {

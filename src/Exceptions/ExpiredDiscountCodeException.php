@@ -1,6 +1,6 @@
 <?php
 
-namespace Gloudemans\Shoppingcart\Exceptions;
+namespace Tjmpromos\Laravel\Shoppingcart\Exceptions;
 
 
 class ExpiredDiscountCodeException

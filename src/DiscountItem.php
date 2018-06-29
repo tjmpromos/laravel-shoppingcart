@@ -1,9 +1,9 @@
 <?php
 
-namespace Gloudemans\Shoppingcart;
+namespace Tjmpromos\Laravel\Shoppingcart;
 
 
-use Gloudemans\Shoppingcart\Contracts\Discountable;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Discountable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 
@@ -144,7 +144,7 @@ class DiscountItem implements Arrayable, Jsonable
      * @param string $name
      * @param float $price
      * @param array $options
-     * @return \Gloudemans\Shoppingcart\DiscountItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\DiscountItem
      */
     public static function fromAttributes($id, $name, $value, $type)
     {

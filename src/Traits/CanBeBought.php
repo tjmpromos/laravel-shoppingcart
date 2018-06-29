@@ -1,6 +1,6 @@
 <?php
 
-namespace Gloudemans\Shoppingcart\Traits;
+namespace Tjmpromos\Laravel\Shoppingcart\Traits;
 
 trait CanBeBought
 {

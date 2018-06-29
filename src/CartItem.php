@@ -1,9 +1,9 @@
 <?php
 
-namespace Gloudemans\Shoppingcart;
+namespace Tjmpromos\Laravel\Shoppingcart;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Gloudemans\Shoppingcart\Contracts\Buyable;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Buyable;
 use Illuminate\Contracts\Support\Jsonable;
 
 
@@ -180,7 +180,7 @@ class CartItem implements Arrayable, Jsonable
     /**
      * Update the cart item from a Buyable.
      *
-     * @param \Gloudemans\Shoppingcart\Contracts\Buyable $item
+     * @param \Tjmpromos\Laravel\Shoppingcart\Contracts\Buyable $item
      * @return void
      */
     public function updateFromBuyable(Buyable $item)
@@ -212,7 +212,7 @@ class CartItem implements Arrayable, Jsonable
      * Associate the cart item with the given model.
      *
      * @param mixed $model
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public function associate($model)
     {
@@ -225,7 +225,7 @@ class CartItem implements Arrayable, Jsonable
      * Set the tax rate.
      *
      * @param int|float $taxRate
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public function setTaxRate($taxRate)
     {
@@ -272,9 +272,9 @@ class CartItem implements Arrayable, Jsonable
     /**
      * Create a new instance from a Buyable.
      *
-     * @param \Gloudemans\Shoppingcart\Contracts\Buyable $item
+     * @param \Tjmpromos\Laravel\Shoppingcart\Contracts\Buyable $item
      * @param array $options
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public static function fromBuyable(Buyable $item, array $options = [])
     {
@@ -286,7 +286,7 @@ class CartItem implements Arrayable, Jsonable
      * Create a new instance from the given array.
      *
      * @param array $attributes
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public static function fromArray(array $attributes)
     {
@@ -301,7 +301,7 @@ class CartItem implements Arrayable, Jsonable
      * @param string $name
      * @param float $price
      * @param array $options
-     * @return \Gloudemans\Shoppingcart\CartItem
+     * @return \Tjmpromos\Laravel\Shoppingcart\CartItem
      */
     public static function fromAttributes($id, $name, $price, array $options = [])
     {

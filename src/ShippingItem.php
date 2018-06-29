@@ -1,9 +1,9 @@
 <?php
 
-namespace Gloudemans\Shoppingcart;
+namespace Tjmpromos\Laravel\Shoppingcart;
 
 
-use Gloudemans\Shoppingcart\Contracts\Shippable;
+use Tjmpromos\Laravel\Shoppingcart\Contracts\Shippable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 

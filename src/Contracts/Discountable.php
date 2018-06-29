@@ -1,6 +1,6 @@
 <?php
 
-namespace Gloudemans\Shoppingcart\Contracts;
+namespace Tjmpromos\Laravel\Shoppingcart\Contracts;
 
 interface Discountable
 {
