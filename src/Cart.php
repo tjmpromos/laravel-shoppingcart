@@ -367,10 +367,10 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return string
      */
-    public function total($decimals = null, $decimalPoint = null, $thousandSeperator = null, $showCurrency = true)
+    public function total($decimals = null, $decimalPoint = null, $thousandSeparator = null, $showCurrency = true)
     {
         $content = $this->getContent();
         $total = $content->reduce(function ($total, $cartItem) {
@@ -378,7 +378,7 @@ class Cart
                 return $total + ($cartItem->qty * $cartItem->priceTax);
             }
         }, 0);
-        return $this->numberFormat($total, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($total, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -386,13 +386,13 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return float
      */
     public function totalExcShipping(
         $decimals = null,
         $decimalPoint = null,
-        $thousandSeperator = null,
+        $thousandSeparator = null,
         $showCurrency = true
     ) {
         $content = $this->getContent();
@@ -403,7 +403,7 @@ class Cart
         $total = $content->reduce(function ($total, $cartItem) {
             return $total + ($cartItem->qty * $cartItem->priceTax);
         }, 0);
-        return $this->numberFormat($total, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($total, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -411,10 +411,10 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return float
      */
-    public function tax($decimals = null, $decimalPoint = null, $thousandSeperator = null, $showCurrency = true)
+    public function tax($decimals = null, $decimalPoint = null, $thousandSeparator = null, $showCurrency = true)
     {
         $content = $this->getContent();
         $tax = $content->reduce(function ($tax, $cartItem) {
@@ -422,7 +422,7 @@ class Cart
                 return $tax + ($cartItem->qty * $cartItem->tax);
             }
         }, 0);
-        return $this->numberFormat($tax, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($tax, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -430,13 +430,13 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return float
      */
     public function taxExcShipping(
         $decimals = null,
         $decimalPoint = null,
-        $thousandSeperator = null,
+        $thousandSeparator = null,
         $showCurrency = true
     ) {
         $content = $this->getContent();
@@ -447,7 +447,7 @@ class Cart
         $tax = $content->reduce(function ($tax, $cartItem) {
             return $tax + ($cartItem->qty * $cartItem->tax);
         }, 0);
-        return $this->numberFormat($tax, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($tax, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -455,10 +455,10 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return float
      */
-    public function subtotal($decimals = null, $decimalPoint = null, $thousandSeperator = null, $showCurrency = true)
+    public function subtotal($decimals = null, $decimalPoint = null, $thousandSeparator = null, $showCurrency = true)
     {
         $content = $this->getContent();
         $subTotal = $content->reduce(function ($subTotal, $cartItem) {
@@ -466,7 +466,7 @@ class Cart
                 return $subTotal + ($cartItem->qty * $cartItem->price);
             }
         }, 0);
-        return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -474,13 +474,13 @@ class Cart
      *
      * @param int $decimals
      * @param string $decimalPoint
-     * @param string $thousandSeperator
+     * @param string $thousandSeparator
      * @return float
      */
     public function subtotalExcShipping(
         $decimals = null,
         $decimalPoint = null,
-        $thousandSeperator = null,
+        $thousandSeparator = null,
         $showCurrency = true
     ) {
         $content = $this->getContent();
@@ -491,7 +491,7 @@ class Cart
         $subTotal = $content->reduce(function ($subTotal, $cartItem) {
             return $subTotal + ($cartItem->qty * $cartItem->price);
         }, 0);
-        return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeperator, null, $showCurrency);
+        return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeparator, null, $showCurrency);
     }
 
     /**
@@ -849,7 +849,7 @@ class Cart
      * @param $value
      * @param $decimals
      * @param $decimalPoint
-     * @param $thousandSeperator
+     * @param $thousandSeparator
      * @param null $currency
      * @param bool $showCurrency
      * @return string
@@ -858,7 +858,7 @@ class Cart
         $value,
         $decimals,
         $decimalPoint,
-        $thousandSeperator,
+        $thousandSeparator,
         $currency = null,
         $showCurrency = true
     ) {
@@ -868,8 +868,8 @@ class Cart
         if (is_null($decimalPoint)) {
             $decimalPoint = is_null(config('cart.format.decimal_point')) ? '.' : config('cart.format.decimal_point');
         }
-        if (is_null($thousandSeperator)) {
-            $thousandSeperator = is_null(config('cart.format.thousand_seperator')) ? ',' : config('cart.format.thousand_seperator');
+        if (is_null($thousandSeparator)) {
+            $thousandSeparator = is_null(config('cart.format.thousand_separator')) ? ',' : config('cart.format.thousand_separator');
         }
         if (is_null($currency)) {
             $currency = is_null(config('cart.format.currency')) ? '' : config('cart.format.currency');
@@ -877,6 +877,6 @@ class Cart
         if (!$showCurrency) {
             $currency = null;
         }
-        return $currency . number_format($value, $decimals, $decimalPoint, $thousandSeperator);
+        return $currency . number_format($value, $decimals, $decimalPoint, $thousandSeparator);
     }
 }
