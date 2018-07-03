@@ -59,7 +59,7 @@ class ShippingItem implements Arrayable, Jsonable
      */
     private $isFreeShipping = false;
     /**
-     * Defines the discount value off the shippign Item is Applicable
+     * Defines the discount value off the shipping Item is Applicable
      *
      * @var boolean
      */
