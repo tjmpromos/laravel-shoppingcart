@@ -7,7 +7,7 @@ use Tjmpromos\Laravel\Shoppingcart\Contracts\Discountable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 
-class DiscountItem implements Arrayable, Jsonable
+class DiscountItem extends CartBase implements Arrayable, Jsonable
 {
     /**
      * The rowID of the discount item.
@@ -193,16 +193,6 @@ class DiscountItem implements Arrayable, Jsonable
         ];
     }
 
-    /**
-     * Convert the object to its JSON representation.
-     *
-     * @param int $options
-     * @return string
-     */
-    public function toJson($options = 0)
-    {
-        return json_encode($this->toArray(), $options);
-    }
 
     /**
      * Associate the discount item with the given model.
@@ -217,26 +207,4 @@ class DiscountItem implements Arrayable, Jsonable
         return $this;
     }
 
-    /**
-     * Get the formatted number.
-     *
-     * @param float $value
-     * @param int $decimals
-     * @param string $decimalPoint
-     * @param string $thousandSeparator
-     * @return string
-     */
-    private function numberFormat($value, $decimals, $decimalPoint, $thousandSeparator)
-    {
-        if (is_null($decimals)) {
-            $decimals = is_null(config('cart.format.decimals')) ? 2 : config('cart.format.decimals');
-        }
-        if (is_null($decimalPoint)) {
-            $decimalPoint = is_null(config('cart.format.decimal_point')) ? '.' : config('cart.format.decimal_point');
-        }
-        if (is_null($thousandSeparator)) {
-            $thousandSeparator = is_null(config('cart.format.thousand_separator')) ? ',' : config('cart.format.thousand_separator');
-        }
-        return number_format($value, $decimals, $decimalPoint, $thousandSeparator);
-    }
 }

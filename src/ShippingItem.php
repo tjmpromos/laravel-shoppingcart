@@ -7,7 +7,7 @@ use Tjmpromos\Laravel\Shoppingcart\Contracts\Shippable;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 
-class ShippingItem implements Arrayable, Jsonable
+class ShippingItem extends CartBase implements Arrayable, Jsonable
 {
     /**
      * The rowID of the shipping item.
@@ -354,49 +354,5 @@ class ShippingItem implements Arrayable, Jsonable
         ];
     }
 
-    /**
-     * Convert the object to its JSON representation.
-     *
-     * @param int $options
-     * @return string
-     */
-    public function toJson($options = 0)
-    {
-        return json_encode($this->toArray(), $options);
-    }
 
-    /**
-     * Get the formatted number.
-     *
-     * @param float $value
-     * @param int $decimals
-     * @param string $decimalPoint
-     * @param string $thousandSeparator
-     * @return string
-     */
-    private function numberFormat(
-        $value,
-        $decimals,
-        $decimalPoint,
-        $thousandSeparator,
-        $currency = null,
-        $showCurrency = true
-    ) {
-        if (is_null($decimals)) {
-            $decimals = is_null(config('cart.format.decimals')) ? 2 : config('cart.format.decimals');
-        }
-        if (is_null($decimalPoint)) {
-            $decimalPoint = is_null(config('cart.format.decimal_point')) ? '.' : config('cart.format.decimal_point');
-        }
-        if (is_null($thousandSeparator)) {
-            $thousandSeparator = is_null(config('cart.format.thousand_separator')) ? ',' : config('cart.format.thousand_separator');
-        }
-        if (is_null($currency)) {
-            $currency = is_null(config('cart.format.currency')) ? '' : config('cart.format.currency');
-        }
-        if (!$showCurrency) {
-            $currency = null;
-        }
-        return $currency . number_format($value, $decimals, $decimalPoint, $thousandSeparator);
-    }
 }
