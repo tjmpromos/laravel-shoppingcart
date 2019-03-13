@@ -128,7 +128,7 @@ class Cart extends CartBase
         }
         $content->put($cartItem->rowId, $cartItem);
 
-        $this->events->fire('cart.added', $cartItem);
+        $this->events->dispatch('cart.added', $cartItem);
         $this->session->put($this->instance, $content);
         return $cartItem;
     }
@@ -153,7 +153,7 @@ class Cart extends CartBase
         }
         $content->put($shippingItem->rowId, $shippingItem);
 
-        $this->events->fire('shipping.added', $shippingItem);
+        $this->events->dispatch('shipping.added', $shippingItem);
         $this->session->put($this->instance, $content);
         return $shippingItem;
     }
@@ -176,7 +176,7 @@ class Cart extends CartBase
             $discountItem->qty += $content->get($discountItem->rowId)->qty;
         }
         $content->put($discountItem->rowId, $discountItem);
-        $this->events->fire('discount.added', $discountItem);
+        $this->events->dispatch('discount.added', $discountItem);
         $this->session->put($this->instance, $content);
         if ($type == 'monetary') {
             $this->discountMonetaryValue = $this->discountMonetaryValue + $value;
@@ -221,7 +221,7 @@ class Cart extends CartBase
         } else {
             $content->put($cartItem->rowId, $cartItem);
         }
-        $this->events->fire('cart.updated', $cartItem);
+        $this->events->dispatch('cart.updated', $cartItem);
         $this->session->put($this->instance, $content);
         return $cartItem;
     }
@@ -237,7 +237,7 @@ class Cart extends CartBase
         $cartItem = $this->get($rowId);
         $content = $this->getContent();
         $content->pull($cartItem->rowId);
-        $this->events->fire('cart.removed', $cartItem);
+        $this->events->dispatch('cart.removed', $cartItem);
         $this->session->put($this->instance, $content);
     }
 
@@ -283,7 +283,7 @@ class Cart extends CartBase
                 'instance'   => $this->currentInstance(),
             ])->delete();
 
-        $this->events->fire('cart.store-destroyed');
+        $this->events->dispatch('cart.store-destroyed');
     }
 
     /**
@@ -558,7 +558,7 @@ class Cart extends CartBase
             'instance'   => $this->currentInstance(),
             'content'    => serialize($content),
         ]);
-        $this->events->fire('cart.stored');
+        $this->events->dispatch('cart.stored');
     }
 
     /**
@@ -597,7 +597,7 @@ class Cart extends CartBase
         foreach ($storedContent as $cartItem) {
             $content->put($cartItem->rowId, $cartItem);
         }
-        $this->events->fire('cart.restored');
+        $this->events->dispatch('cart.restored');
         $this->session->put($this->instance, $content);
         $this->instance($currentInstance);
         $this->getConnection()->table($this->getTableName())
